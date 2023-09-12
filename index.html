@@ -36,7 +36,7 @@
       class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white"
     >
       <main>
-        <h4>Kepada Bapa/Ibu/Saudara/i,</h4>
+        <h4>Kepada <span> Bapa/Ibu/Saudara/i, </span></h4>
         <h1>Angga & Sarah</h1>
         <p>Akan melangsungkan resepsi pernikahan dalam:</p>
         <div class="simply-countdown"></div>
@@ -48,7 +48,7 @@
     <!-- end cover -->
 
     <!-- offcanvas -->
-    <nav class="navbar navbar-expand-md bg-transparent sticky-top mynavbar">
+    <nav class="navbar navbar-expand-lg bg-transparent sticky-top mynavbar">
       <div class="container">
         <a class="navbar-brand logo" href="#home">Angsa</a>
         <button
@@ -99,7 +99,7 @@
         <div class="row justify-content-center">
           <div class="col-md-8 text-center">
             <h2>Acara pernikahan</h2>
-            <h3>Diselenggarakan pada 3 september 2023 di yogyakarta.</h3>
+            <h3>Diselenggarakan pada 1 January 2024 di yogyakarta.</h3>
             <p>
               Oleh karena itu, dengan segala hormat, kami bermaksud untuk
               mengundang Bapak/Ibu, Saudara/i, untuk hadir pada acara pernikahan
@@ -171,6 +171,15 @@
               Jl. Affandi No.37, Karang Gayam, Caturtunggal, Kec. Depok, Kab.
               Sleman, Daerah Istimewa Yogyakarta
             </p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7906.427204342376!2d110.3885606!3d-7.7671591!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59ba0308b663%3A0xbf5c12e42b623181!2sGrand%20Tjokro%20Yogyakarta!5e0!3m2!1sid!2sid!4v1694504661706!5m2!1sid!2sid"
+              width="100%"
+              height="250"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
             <a
               href="https://goo.gl/maps/RwGRSGm6iU9HJSqw6"
               target="_blank"
@@ -198,7 +207,7 @@
                 </div>
                 <div class="col-md-6">
                   <i class="bi bi-calendar-event d-block"></i
-                  ><span>Minggu, 3 September 2023</span>
+                  ><span>Senin, 1 Januari 2024</span>
                 </div>
               </div>
             </div>
@@ -221,7 +230,7 @@
                 </div>
                 <div class="col-md-6">
                   <i class="bi bi-calendar-event d-block"></i
-                  ><span>Minggu, 3 September 2023</span>
+                  ><span>Senin, 1 Januari 2024</span>
                 </div>
               </div>
             </div>
@@ -452,6 +461,7 @@
                   id="nama"
                   name="nama"
                   placeholder="nama lengkap"
+                  required
                 />
               </div>
             </div>
@@ -473,8 +483,8 @@
             <div class="col-12">
               <div class="mb-3">
                 <label for="status" class="form-label">Konfirmasi</label>
-                <select name="status" id="status" class="form-select">
-                  <option selected>pilih salah satu</option>
+                <select name="status" id="status" class="form-select" required>
+                  <option selected value="">pilih salah satu</option>
                   <option value="Hadir">Hadir</option>
                   <option value="Tidak Hadir">Tidak Bisa Hadir</option>
                 </select>
@@ -551,6 +561,18 @@
     </footer>
     <!-- End Footer -->
 
+    <!-- audio -->
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source src="audio/massobeats - gift.mp3" type="audio/mp3" />
+      </audio>
+
+      <div class="audio-icon-wrapper" style="display: none">
+        <i class="bi bi-disc"></i>
+      </div>
+    </div>
+    <!-- end audio -->
+
     <!-- Javascript -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -561,9 +583,9 @@
     <!-- Simply countdown -->
     <script>
       simplyCountdown('.simply-countdown', {
-        year: 2023, // required
-        month: 9, // required
-        day: 3, // required
+        year: 2024, // required
+        month: 1, // required
+        day: 1, // required
         hours: 9, // Default is 0 [0-23] integer
         words: {
           //words displayed into the countdown
@@ -604,6 +626,12 @@
     <!-- Disable scroll cover -->
     <script>
       const rootElement = document.querySelector(':root');
+      // audio
+      const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+      const audioIcon = document.querySelector('.audio-icon-wrapper i');
+      const song = document.querySelector('#song');
+      let isPlaying = false;
+      // end audio
 
       function disableScroll() {
         scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -618,12 +646,39 @@
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = 'smooth';
-        localStorage.setItem('opened', 'true');
+        // localStorage.setItem('opened', 'true');
+        playAudio();
       }
 
-      if (!localStorage.getItem('opened')) {
-        disableScroll();
+      // audio
+      function playAudio() {
+        song.volume = 0.5;
+        audioIconWrapper.style.display = 'flex';
+        song.play();
+        isPlaying = true;
       }
+
+      audioIconWrapper.onclick = function () {
+        if (isPlaying) {
+          song.pause();
+          // change icon pause
+          audioIcon.classList.remove('bi-disc');
+          audioIcon.classList.add('bi-pause-circle');
+        } else {
+          song.play();
+          // change icon playing
+          audioIcon.classList.add('bi-disc');
+          audioIcon.classList.remove('bi-pause-circle');
+        }
+
+        isPlaying = !isPlaying;
+      };
+      // end audio
+
+      // if (!localStorage.getItem('opened')) {
+      //   disableScroll();
+      // }
+      disableScroll();
     </script>
     <!-- End Disable scroll cover -->
 
@@ -642,6 +697,18 @@
       });
     </script>
     <!-- end form -->
+
+    <!-- custom guest name -->
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const nama = urlParams.get('n') || '';
+      const pronoun = urlParams.get('p') || 'Bapak/Ibu/Saudara/i';
+      const namaContainer = document.querySelector('.hero h4 span');
+      namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
+
+      document.querySelector('#nama').value = nama;
+    </script>
+    <!-- end custom guest name -->
     <!-- End Javascript -->
   </body>
 </html>
