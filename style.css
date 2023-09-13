@@ -9,8 +9,11 @@
   --bs-body-font-family: 'DM Sans', sans-serif;
 }
 /* End Variable */
+html {
+  scroll-behavior: smooth;
+}
 
-.body {
+body {
   font-size: 1.2rem;
   min-height: 4000px;
 }
