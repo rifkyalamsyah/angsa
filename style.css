@@ -98,7 +98,7 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  /* margin-top: -6rem; */
+  margin-top: -6rem;
   padding-top: 15rem;
   padding-bottom: 5rem;
 }
@@ -188,7 +188,6 @@ body {
   background-color: var(--brown) !important;
   border: 1px solid var(--dark-brown);
   padding: 8px 16px;
-
 }
 
 .info .btn:hover {
