@@ -24,8 +24,11 @@
       rel="stylesheet"
     />
     <!-- Simply countdown -->
-    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css" />
-    <script src="countdown/simplyCountdown.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="src/countdown/simplyCountdown.theme.default.css"
+    />
+    <script src="src/countdown/simplyCountdown.min.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -40,7 +43,10 @@
         <h1>Angga & Sarah</h1>
         <p>Akan melangsungkan resepsi pernikahan dalam:</p>
         <div class="simply-countdown"></div>
-        <a href="#home" class="btn btn-lg mt-4" onclick="enableScroll()"
+        <a
+          href="#home"
+          class="btn btn-lg mt-4"
+          onclick="enableScroll(), this.innerHTML = 'Scroll ke bawah!';"
           >Lihat undangan</a
         >
       </main>
@@ -48,7 +54,7 @@
     <!-- end cover -->
 
     <!-- offcanvas -->
-    <nav class="navbar navbar-expand-lg bg-transparent sticky-top mynavbar">
+    <nav class="navbar bg-transparent sticky-top mynavbar">
       <div class="container">
         <a class="navbar-brand logo" href="#home">Angsa</a>
         <button
@@ -183,7 +189,7 @@
             <a
               href="https://goo.gl/maps/RwGRSGm6iU9HJSqw6"
               target="_blank"
-              class="btn btn-dark btn-sm my-3"
+              class="btn btn-dark my-3"
               >Klik untuk membuka peta</a
             >
             <p class="description">
@@ -564,7 +570,7 @@
     <!-- audio -->
     <div id="audio-container">
       <audio id="song" autoplay loop>
-        <source src="audio/massobeats - gift.mp3" type="audio/mp3" />
+        <source src="src/audio/massobeats - gift.mp3" type="audio/mp3" />
       </audio>
 
       <div class="audio-icon-wrapper" style="display: none">
@@ -646,8 +652,10 @@
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = 'smooth';
-        // localStorage.setItem('opened', 'true');
+        // play audio
         playAudio();
+        // run fullscreen mode
+        openFullscreen();
       }
 
       // audio
@@ -675,9 +683,9 @@
       };
       // end audio
 
-      // if (!localStorage.getItem('opened')) {
-      //   disableScroll();
-      // }
+      /* fullscreen */
+      var elem = document.documentElement;
+
       disableScroll();
     </script>
     <!-- End Disable scroll cover -->
@@ -709,6 +717,23 @@
       document.querySelector('#nama').value = nama;
     </script>
     <!-- end custom guest name -->
+
+    <!-- fullscreen mode -->
+    <script>
+      /* View in fullscreen */
+      function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+          /* IE11 */
+          elem.msRequestFullscreen();
+        }
+      }
+    </script>
+    <!-- end fullscreen mode -->
     <!-- End Javascript -->
   </body>
 </html>
