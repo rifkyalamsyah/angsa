@@ -53,51 +53,56 @@
     </section>
     <!-- end cover -->
 
-    <!-- offcanvas -->
-    <nav class="navbar bg-transparent sticky-top mynavbar">
+    <!-- navbar -->
+    <nav class="sticky-top bg-transparent pt-5 mynavbar" id="navbar">
       <div class="container">
-        <a class="navbar-brand logo" href="#home">Angsa</a>
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasNavbar"
-          aria-controls="offcanvasNavbar"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="offcanvas offcanvas-end"
-          tabindex="-1"
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-        >
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title logo" id="offcanvasNavbarLabel">
-              Angsa
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="offcanvas-body">
-            <div class="navbar-nav ms-auto text-center">
-              <a class="nav-link" href="#home">Home</a>
-              <a class="nav-link" href="#info">Info</a>
-              <a class="nav-link" href="#story">Story</a>
-              <a class="nav-link" href="#gallery">Gallery</a>
-              <a class="nav-link" href="#rsvp">RSVP</a>
-              <a class="nav-link" href="#gifts">Gifts</a>
-            </div>
-          </div>
+        <ul class="nav">
+          <li class="nav-item">
+            <a
+              class="nav-link text-white my-blog logo"
+              aria-current="page"
+              href="#"
+              >Wadda</a
+            >
+          </li>
+          <li class="nav-item ms-auto">
+            <i
+              class="bi bi-justify-right"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasRight"
+              aria-controls="offcanvasRight"
+            ></i>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="offcanvas offcanvas-end"
+        tabindex="-1"
+        id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel"
+      >
+        <div class="offcanvas-header">
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="nav flex-column text-center">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link" href="#info">Info</a>
+            <a class="nav-link" href="#story">Story</a>
+            <a class="nav-link" href="#gallery">Gallery</a>
+            <a class="nav-link" href="#rsvp">RSVP</a>
+            <a class="nav-link" href="#gifts">Gifts</a>
+          </nav>
         </div>
       </div>
     </nav>
-    <!-- end offcanvas -->
+    <!-- end navbar -->
 
     <!-- home -->
     <section id="home" class="home">
@@ -450,7 +455,7 @@
             <p>Isi form di bawah ini untuk melakukan konfirmasi kehadiran.</p>
           </div>
         </div>
-        <div class="form-card mt-4 mx-5">
+        <div class="form-card mt-4 mx-3">
           <!-- form -->
           <form
             class="row row-cols-md-auto g-3 align-items-center justify-content-center"
@@ -730,6 +735,23 @@
       document.querySelector('#nama').value = nama;
     </script>
     <!-- end custom guest name -->
+
+    <!-- hide navbar scroll down -->
+    <script>
+      var lastScrollTop = 0;
+      navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function () {
+        var scrollTop =
+          window.pageXOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+          navbar.style.top = '-100px';
+        } else {
+          navbar.style.top = '0';
+        }
+        lastScrollTop = scrollTop;
+      });
+    </script>
+    <!-- end hide navbar scroll down -->
 
     <!-- End Javascript -->
   </body>

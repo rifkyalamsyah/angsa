@@ -68,29 +68,45 @@ body {
 }
 
 /* mynavbar */
+/* offcanvas 2 */
+.offcanvas-end {
+  top: 0;
+  right: 0;
+  width: 365px !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+}
 .mynavbar {
-  background-color: rgba(255, 255, 255, 0.3) !important;
-  backdrop-filter: blur(4px);
+  /* border-left: 1px solid #000; */
+  transition: 0.5s;
 }
 
-.mynavbar .offcanvas {
-  height: 100vh;
-}
-
-.mynavbar .navbar-brand,
-.mynavbar .offcanvas-title {
-  font-family: 'Sacramento', cursive;
-  font-size: 3.2rem;
-  font-weight: bold;
-}
-
-.mynavbar .nav-link {
-  text-transform: uppercase;
-}
-.mynavbar .logo {
+.mynavbar .nav .nav-link {
   color: var(--brown);
+  font-size: 24px;
 }
+.mynavbar .nav .nav-link:hover {
+  color: var(--light-brown);
+}
+
+.mynavbar .nav .nav-item i {
+  font-size: 36px;
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 8px;
+}
+
+.mynavbar .logo {
+  background-color: white;
+  color: var(--brown) !important;
+  font-weight: 600;
+  border-radius: 8px;
+  mix-blend-mode: difference !important;
+}
+
 /* end mynavbar */
+
 
 /* home */
 .home {
@@ -467,6 +483,8 @@ footer a {
 }
 /* end audio */
 
+
+
 /* Media Query */
 /* Dekstop */
 @media (max-width: 1200px) {
@@ -585,5 +603,20 @@ footer a {
     top: 31px;
   }
   /* end timeline */
+
+  /* RSVP */
+  .rsvp form input,
+  .form-select {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 12px;
+  }
+  /* end RSVP */
+
+  /* offcanvas 2 */
+  .offcanvas-end {
+    width: 250px !important;
+  }
+  /* end offcanvas 2 */
 }
 /* End Media Query */
